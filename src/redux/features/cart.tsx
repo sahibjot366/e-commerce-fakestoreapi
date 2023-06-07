@@ -5,7 +5,7 @@ type CartItem={
     product:Product,
     amount:number;
 }
-type CartState= {
+export type CartState= {
     cart:CartItem[]
   }
 

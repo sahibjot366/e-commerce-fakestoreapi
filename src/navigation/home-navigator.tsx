@@ -11,6 +11,8 @@ import HomeScreen from '../screens/home/home-screen';
 import CartScreen from '../screens/home/cart-screen';
 import ProductDetailsScreen from '../screens/home/product-details';
 
+import type { Product } from '../redux/features/product';
+
 
 export type HomeTabParamList = {
     HomeScreenTab:undefined;
@@ -19,7 +21,7 @@ export type HomeTabParamList = {
 
   export type HomeStackParamList = {
     HomeScreen:undefined;
-    ProductDetails:undefined;
+    ProductDetails:{product:Product};
   };
 
 

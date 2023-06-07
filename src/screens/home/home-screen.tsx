@@ -1,16 +1,68 @@
-import React from 'react'
+import React,{useEffect,useCallback} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import type {NavigationProp} from '@react-navigation/native';
-import {Text,Button} from 'react-native'
+import {useSelector,useDispatch } from 'react-redux';
+import {Text,View,ActivityIndicator,FlatList,StyleSheet} from 'react-native'
 
-import { HomeStackParamList } from '../../navigation/home-navigator'
-const HomeScreen = ({navigation}:{navigation:NavigationProp<HomeStackParamList>}) => {
+import { AppState } from '../../redux/store';
+import { fetchProducts } from '../../redux/features/product';
+import {ThunkDispatch} from '@reduxjs/toolkit'
+
+
+import type { Product } from '../../redux/features/product';
+
+import ProductListItem from '../../components/product-listitem';
+
+const HomeScreen = () => {
+  const dispatch=useDispatch<ThunkDispatch<any,any,any>>()
+  const {isLoading,isError,products}=useSelector((state:AppState)=>state.product)
+
+  const renderItem=useCallback(({item}:{item:Product})=>{
+    return <ProductListItem product={item} />
+  },[])
+
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[])
   return (
-    <SafeAreaView>
-        <Text style={{color:'black'}}>Login</Text>
-        <Button title='go to product details' onPress={()=>{navigation.navigate('ProductDetails')}}  />
+    <SafeAreaView style={styles.parentContainer}>
+        {isLoading?
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator color={'white'} />
+        <Text style={styles.titleText}>Product List Loading..</Text>
+      </View>
+      :
+      <View style={styles.listContainer}>
+        <Text style={styles.titleText}>Product List</Text>
+        <FlatList
+        data={products}
+        keyExtractor={item=>item.id.toString()}
+        renderItem={renderItem}
+        />
+      </View>
+      }
+        
     </SafeAreaView>
   )
 }
-
+const styles=StyleSheet.create({
+  parentContainer:{
+    backgroundColor:'#121212',
+    flex:1
+  },
+  listContainer:{
+    marginHorizontal:12,
+    paddingBottom:60
+  },
+  titleText:{
+    color:'white',
+    fontSize:30,
+    fontWeight:'bold',
+    marginVertical:8
+  },
+  loadingContainer:{
+    alignItems:'center',
+    justifyContent:'center',
+    flex:1
+  }
+})
 export default HomeScreen

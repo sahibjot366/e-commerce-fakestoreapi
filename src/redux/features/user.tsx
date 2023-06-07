@@ -9,7 +9,7 @@ type User={
     jwttoken:string;
 }
 
-type userState={
+export type userState={
     userDetails:User;
 }
 

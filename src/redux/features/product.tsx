@@ -10,7 +10,7 @@ export type Product={
     image:string;
 }
 
-type productState={
+export type productState={
     products:Product[];
     isLoading:boolean;
     isError:boolean;
