@@ -19,7 +19,18 @@ const cartSlice=createSlice({
     initialState,
     reducers:{
         addItem:(state,action)=>{
-            state.cart=[...state.cart,action.payload]
+            let itemFound=false;
+            const newCart=state.cart.map(item=>{
+                if(item.product.id==action.payload.product.id){
+                    itemFound=true;
+                    return {...item,amount:item.amount+action.payload.amount}
+                }
+                return item
+            })
+            if(!itemFound)
+                state.cart=[...state.cart,action.payload]
+            else 
+                state.cart=newCart
         },
         removeItem:(state,action)=>{
             state.cart=state.cart.filter(item=>item.product.id!=action.payload)
