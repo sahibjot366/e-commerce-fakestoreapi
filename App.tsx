@@ -1,10 +1,10 @@
 import React from 'react'
-import {View,StyleSheet} from 'react-native'
+import { RootNavigator } from './src/navigation/root-navigator';
 
 
 const App=()=>{
   return (
-    <View></View>
+    <RootNavigator />
   )
 }
 
