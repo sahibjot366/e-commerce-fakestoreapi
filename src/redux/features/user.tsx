@@ -6,22 +6,22 @@ type User={
     address:string;
     email:string;
     phonenumber:string;
+    jwttoken:string;
 }
 
 type userState={
     userDetails:User;
-    jwttoken:string;
 }
 
 
 const initialState:userState ={
     userDetails:{
+        jwttoken:'',
         name:'',
         address:'',
         email:'',
         phonenumber:''
     },
-    jwttoken:''
 }
 
 
@@ -29,11 +29,13 @@ const userSlice=createSlice({
     name:'user',
     initialState,
     reducers:{
-
+        setUserDetails:(state,action)=>{
+            state.userDetails=action.payload
+        }
     },
 
 })
 
-export const {}=userSlice.actions
+export const {setUserDetails}=userSlice.actions
 
 export default userSlice.reducer

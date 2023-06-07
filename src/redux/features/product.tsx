@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 
 
 export type Product={
@@ -11,17 +11,38 @@ export type Product={
 }
 
 type productState={
-    products:Product[]
+    products:Product[];
+    isLoading:boolean;
+    isError:boolean;
 }
 const initialState:productState ={
-    products:[]
+    products:[],
+    isLoading:false,
+    isError:false
 }
+
+//Actions
+export const fetchProducts=createAsyncThunk('fetchProducts',async ()=>{
+    const response=await fetch('https://fakestoreapi.com/products');
+    return response.json();
+})
 
 const productSlice=createSlice({
     name:'product',
     initialState,
-    reducers:{
-
+    reducers:{},
+    extraReducers:(builder)=>{
+        builder.addCase(fetchProducts.pending,(state,action)=>{
+            state.isLoading=true;
+        })
+        builder.addCase(fetchProducts.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.products=action.payload
+        })
+        builder.addCase(fetchProducts.rejected,(state,action)=>{
+            state.isError=true;
+            state.isLoading=false;
+        })
     }
 })
 
