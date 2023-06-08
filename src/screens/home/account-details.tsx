@@ -2,11 +2,13 @@ import React from 'react'
 import {StyleSheet,Text} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {useSelector} from 'react-redux'
+
+//Types
 import type { AppState } from '../../redux/store'
 
 const AccountDetails = () => {
 const {userDetails}=useSelector((state:AppState)=>state.user)
-console.log(userDetails)
+
   return (
     <SafeAreaView style={styles.parentContainer}>
       <Text style={styles.titleText}>User Details</Text>

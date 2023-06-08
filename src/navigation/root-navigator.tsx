@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import { NavigationContainer } from './navigation-container';
 
+//Navigators
 import { AuthNavigator ,AuthStackParamList} from './auth-navigator';
 import { HomeNavigator,HomeTabParamList } from './home-navigator';
 

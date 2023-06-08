@@ -1,13 +1,17 @@
 import React,{useCallback} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {StyleSheet} from 'react-native'
-import {Text,View,FlatList,Alert} from 'react-native'
+import {Text,View,FlatList,Alert,StyleSheet} from 'react-native'
 import {useSelector,useDispatch} from 'react-redux'
 
+//Types
 import type { AppState } from '../../redux/store'
 import type { CartItem } from '../../redux/features/cart'
+
+//Components
 import CartListItem from '../../components/cart-listitem'
 import Button from '../../ui/button'
+
+//Actions
 import { clearCart } from '../../redux/features/cart'
 
 const CartScreen = () => {

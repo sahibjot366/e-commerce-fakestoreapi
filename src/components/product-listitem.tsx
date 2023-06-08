@@ -1,9 +1,9 @@
 import React from 'react'
 import {TouchableOpacity,StyleSheet,Image, Text,View} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+
+//Types
 import type { Product } from '../redux/features/product'
-
-
 import type { HomeStackParamList } from '../navigation/home-navigator'
 import type {NavigationProp} from '@react-navigation/native';
 

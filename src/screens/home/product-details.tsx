@@ -1,11 +1,16 @@
 import React,{useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {Text,StyleSheet,Image,View} from 'react-native'
+import {useDispatch} from 'react-redux'
+
+//Types
 import type { Product } from '../../redux/features/product'
+
+//Components
 import Button from '../../ui/button'
 import Counter from '../../components/counter'
 
-import {useDispatch} from 'react-redux'
+//Actions
 import { addItem } from '../../redux/features/cart'
 
 type routeParams={

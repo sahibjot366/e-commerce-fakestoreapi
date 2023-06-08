@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer,productReducer,cartReducer } from "./features";
-import { userState } from "./features/user";
-import { productState } from "./features/product";
-import { CartState } from "./features/cart";
+
+//Types
+import type { userState } from "./features/user";
+import type { productState } from "./features/product";
+import type { CartState } from "./features/cart";
 
 export type AppState={
     user:userState;

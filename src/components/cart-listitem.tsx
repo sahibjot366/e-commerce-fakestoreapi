@@ -1,11 +1,17 @@
 import React,{useState,useEffect} from 'react'
 import {View,StyleSheet,Image,Text} from 'react-native'
-import Counter from './counter'
-import type { CartItem } from '../redux/features/cart'
 import Icon from 'react-native-vector-icons/FontAwesome'
-
-import { updateAmount,removeItem } from '../redux/features/cart'
 import {useDispatch} from 'react-redux'
+
+//Types
+import type { CartItem } from '../redux/features/cart'
+
+//Components
+import Counter from './counter'
+
+//Actions
+import { updateAmount,removeItem } from '../redux/features/cart'
+
 
 type CartListItemProps={
     cart:CartItem

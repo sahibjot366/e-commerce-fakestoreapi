@@ -4,14 +4,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import React from 'react';
 import {Platform} from 'react-native';
-
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+//Screens
 import HomeScreen from '../screens/home/home-screen';
 import CartScreen from '../screens/home/cart-screen';
 import ProductDetailsScreen from '../screens/home/product-details';
 import AccountDetails from '../screens/home/account-details';
 
+//Types
 import type { Product } from '../redux/features/product';
 
 

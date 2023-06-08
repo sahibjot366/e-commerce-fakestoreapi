@@ -1,16 +1,17 @@
 import React,{useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {Text,StyleSheet} from 'react-native'
-import type {NavigationProp} from '@react-navigation/native';
-import { RootStackParamList } from '../../navigation/root-navigator';
 import {Button,Input} from '../../ui';
 import {useDispatch} from 'react-redux'
 
+//Types
+import type {NavigationProp} from '@react-navigation/native';
+import type { RootStackParamList } from '../../navigation/root-navigator';
+
+//Actions
 import { setUserDetails } from '../../redux/features/user';
 
 const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>}) => {
-
-
 
   const dispatch=useDispatch()
 

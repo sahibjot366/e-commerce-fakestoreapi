@@ -3,13 +3,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import {useSelector,useDispatch } from 'react-redux';
 import {Text,View,ActivityIndicator,FlatList,StyleSheet} from 'react-native'
 
-import { AppState } from '../../redux/store';
-import { fetchProducts } from '../../redux/features/product';
+//Types
+import type { AppState } from '../../redux/store';
+import type { Product } from '../../redux/features/product';
 import {ThunkDispatch} from '@reduxjs/toolkit'
 
+//Actions
+import { fetchProducts } from '../../redux/features/product';
 
-import type { Product } from '../../redux/features/product';
-
+//Components
 import ProductListItem from '../../components/product-listitem';
 
 const HomeScreen = () => {

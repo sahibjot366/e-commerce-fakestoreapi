@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type { Product } from './product'
-import product from './product';
+
 export type CartItem={
     product:Product,
     amount:number;
