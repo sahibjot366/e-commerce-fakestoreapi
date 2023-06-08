@@ -15,8 +15,13 @@ const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>
   const dispatch=useDispatch()
 
   const onLogin=()=>{
+    if(!details.address || !details.email || !details.name || !details.password || !details.phonenumber){
+        setShowError(true)
+        return;
+    }
     const samplejwttoken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTYyMTQ4MjUwOH0.x_vLHtTCp3FFQj7swtSMUyHM8NJ7g9MYIdhIsXyxyyg';
     dispatch(setUserDetails({...details,jwttoken:samplejwttoken}))
+    setShowError(false)
     navigation.navigate('Home')
   }
 
@@ -29,6 +34,7 @@ const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>
   }
   const [details,setDetails]=useState<detailsType>({email:'',password:'',name:'',address:'',phonenumber:''})
   const [showPassword,toggleShowPassword]=useState(false)
+  const [showError,setShowError]=useState(false)
     
   return (
     <SafeAreaView style={styles.parentContainer}>
@@ -63,6 +69,7 @@ const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>
             value={details?.password}
             onChangeText={(updatedText)=>{setDetails((prev)=>({...prev,password:updatedText}))}}
           />
+          {showError?<Text style={styles.errorText}>All fields are required! Please fill all the fields.</Text>:null}
         <Button label='Log In' onPress={onLogin}  />
     </SafeAreaView>
   )
@@ -84,6 +91,9 @@ const styles=StyleSheet.create({
     color:'white',
     alignSelf:'flex-start'
   },
+  errorText:{
+    color:'red'
+  }
 })
 
 export default LoginScreen
