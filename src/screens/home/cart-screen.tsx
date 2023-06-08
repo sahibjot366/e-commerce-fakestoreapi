@@ -1,19 +1,30 @@
 import React,{useCallback} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {StyleSheet} from 'react-native'
-import {Text,View,FlatList} from 'react-native'
-import {useSelector} from 'react-redux'
+import {Text,View,FlatList,Alert} from 'react-native'
+import {useSelector,useDispatch} from 'react-redux'
 
-import { AppState } from '../../redux/store'
-import { CartItem } from '../../redux/features/cart'
+import type { AppState } from '../../redux/store'
+import type { CartItem } from '../../redux/features/cart'
 import CartListItem from '../../components/cart-listitem'
+import Button from '../../ui/button'
+import { clearCart } from '../../redux/features/cart'
 
 const CartScreen = () => {
   const {cart}=useSelector((state:AppState)=>state.cart)
-
+  const dispatch=useDispatch()
   const renderItem=useCallback(({item}:{item:CartItem})=>{
     return <CartListItem cart={item} />
   },[cart])
+
+  const renderHeaderItem=useCallback(()=>{
+    return <Button label={`Proceed to buy ${cart.length} ${cart.length==1?'item':'items'}`} onPress={onBuyButtonPress} style={{alignSelf:'center'}} />
+  },[cart.length])
+
+  const onBuyButtonPress=()=>{
+    Alert.alert('Thanks for shopping!!','Your order will be delivered in 2-3 days.')
+    dispatch(clearCart())
+  }
   return (
     <SafeAreaView style={styles.parentContainer}>
         {cart.length==0?
@@ -26,6 +37,7 @@ const CartScreen = () => {
           data={cart}
           keyExtractor={item=>item.product.id.toString()}
           renderItem={renderItem}
+          ListHeaderComponent={renderHeaderItem}
           />
         </View>
       }

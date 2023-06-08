@@ -45,7 +45,7 @@ const cartSlice=createSlice({
                 return item;
             })
         },
-        clearCart:(state,action)=>{
+        clearCart:(state)=>{
             state.cart=[]
         }
 
