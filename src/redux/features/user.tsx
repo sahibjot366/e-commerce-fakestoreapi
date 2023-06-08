@@ -7,6 +7,7 @@ type User={
     email:string;
     phonenumber:string;
     jwttoken:string;
+    password:string;
 }
 
 export type userState={
@@ -20,7 +21,8 @@ const initialState:userState ={
         name:'',
         address:'',
         email:'',
-        phonenumber:''
+        phonenumber:'',
+        password:'',
     },
 }
 

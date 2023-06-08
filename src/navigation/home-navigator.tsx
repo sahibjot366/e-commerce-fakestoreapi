@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import HomeScreen from '../screens/home/home-screen';
 import CartScreen from '../screens/home/cart-screen';
 import ProductDetailsScreen from '../screens/home/product-details';
+import AccountDetails from '../screens/home/account-details';
 
 import type { Product } from '../redux/features/product';
 
@@ -17,6 +18,7 @@ import type { Product } from '../redux/features/product';
 export type HomeTabParamList = {
     HomeScreenTab:undefined;
     CartScreenTab:undefined;
+    AccountDetailsTab:undefined;
   };
 
   export type HomeStackParamList = {
@@ -39,6 +41,10 @@ const HomeTabBarIcon = (props: TabBarIconProps) => <Icon name='home' {...props} 
 
 const CartTabBarIcon = (props: TabBarIconProps) => (
     <Icon name="shopping-cart" {...props} />
+  );
+
+const AccountTabBarIcon = (props: TabBarIconProps) => (
+    <Icon name="user" {...props} />
   );
 
 
@@ -88,6 +94,15 @@ export const HomeNavigator = () => {
         }}
         name="CartScreenTab"
         component={CartScreen}
+      />
+      <Tab.Screen
+        options={{
+          ...tabOptions,
+          tabBarLabel: 'Account',
+          tabBarIcon: AccountTabBarIcon,
+        }}
+        name="AccountDetailsTab"
+        component={AccountDetails}
       />
       
     </Tab.Navigator>
