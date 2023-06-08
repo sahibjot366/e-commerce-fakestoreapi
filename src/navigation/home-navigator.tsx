@@ -3,8 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import React from 'react';
-import {Platform} from 'react-native';
+import {Platform,View,Text,StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import {useSelector} from 'react-redux'
 
 //Screens
 import HomeScreen from '../screens/home/home-screen';
@@ -14,6 +15,8 @@ import AccountDetails from '../screens/home/account-details';
 
 //Types
 import type { Product } from '../redux/features/product';
+import type { AppState } from '../redux/store'
+
 
 
 export type HomeTabParamList = {
@@ -40,10 +43,6 @@ type TabBarIconProps = {
 const HomeTabBarIcon = (props: TabBarIconProps) => <Icon name='home' {...props} />
 
 
-const CartTabBarIcon = (props: TabBarIconProps) => (
-    <Icon name="shopping-cart" {...props} />
-  );
-
 const AccountTabBarIcon = (props: TabBarIconProps) => (
     <Icon name="user" {...props} />
   );
@@ -66,6 +65,25 @@ const HomeStackNavigator = () => {
 
 
 export const HomeNavigator = () => {
+  const {cart}=useSelector((state:AppState)=>state.cart)
+  const CartTabBarIcon = (props: TabBarIconProps) => (
+    <View style={styles.parentContainer}>
+      {cart.length>0?<View style={styles.amountIcon}><Text style={styles.amountText}>{cart.length}</Text></View>:null}
+      <Icon name="shopping-cart" {...props} size={18} />
+    </View>
+    );
+
+  const styles=StyleSheet.create({
+    parentContainer:{
+      alignItems:'center',justifyContent:'center',marginBottom:2
+    },
+    amountIcon:{
+      alignSelf:'flex-end',borderRadius:100,padding:2,paddingHorizontal:5,backgroundColor:'red',alignItems:'center',justifyContent:'center'
+    },
+    amountText:{color:'white',fontSize:8},
+
+
+  })
   return (
     <Tab.Navigator
       screenOptions={{
