@@ -13,18 +13,19 @@ type CartListItemProps={
 
 
 const CartListItem:React.FC<CartListItemProps> = ({cart}) => {
-    console.log(cart.amount)
+   
     const [amount,setAmount]=useState(cart.amount)
 
     useEffect(()=>{
         setAmount(cart.amount)
     },[cart.amount])
+
     const dispatch=useDispatch()
     const onUpdateCount=(newCount:number)=>{
         if(newCount==0)
             dispatch(removeItem(cart.product.id))
         else
-            dispatch(updateAmount({id:cart.product.id,updateAmount:newCount}))
+            dispatch(updateAmount({id:cart.product.id,updatedAmount:newCount}))
         setAmount(newCount)
     }
 

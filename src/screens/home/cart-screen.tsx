@@ -13,7 +13,7 @@ const CartScreen = () => {
 
   const renderItem=useCallback(({item}:{item:CartItem})=>{
     return <CartListItem cart={item} />
-  },[])
+  },[cart])
   return (
     <SafeAreaView style={styles.parentContainer}>
         {cart.length==0?
