@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type { Product } from './product'
 import product from './product';
-type CartItem={
+export type CartItem={
     product:Product,
     amount:number;
 }
@@ -27,6 +27,7 @@ const cartSlice=createSlice({
                 }
                 return item
             })
+
             if(!itemFound)
                 state.cart=[...state.cart,action.payload]
             else 
@@ -35,19 +36,10 @@ const cartSlice=createSlice({
         removeItem:(state,action)=>{
             state.cart=state.cart.filter(item=>item.product.id!=action.payload)
         },
-        incrementAmount:(state,action)=>{
+        updateAmount:(state,action)=>{
             state.cart=state.cart.map(item=>{
-                if(item.product.id==action.payload){
-                    const newItem={...item,amount:item.amount+1}
-                    return newItem;
-                }
-                return item;
-            })
-        },
-        decrementAmount:(state,action)=>{
-            state.cart=state.cart.map(item=>{
-                if(item.product.id==action.payload){
-                    const newItem={...item,amount:item.amount-1}
+                if(item.product.id===action.payload.id){
+                    const newItem={...item,amount:action.payload.updatedAmount}
                     return newItem;
                 }
                 return item;
@@ -61,6 +53,6 @@ const cartSlice=createSlice({
 
 })
 
-export const {addItem,removeItem,incrementAmount,decrementAmount,clearCart}=cartSlice.actions
+export const {addItem,removeItem,updateAmount,clearCart}=cartSlice.actions
 
 export default cartSlice.reducer;
