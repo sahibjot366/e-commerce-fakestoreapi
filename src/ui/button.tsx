@@ -1,6 +1,10 @@
 import React from 'react'
 import { TouchableOpacity,Text,StyleSheet } from 'react-native'
 
+//Colors
+import { BLUE_TINT_COLOR,TEXT_COLOR } from '../constants/colors'
+
+
 type ButtonProps={
     label:string;
     onPress:()=>void,
@@ -18,7 +22,7 @@ const Button:React.FC<ButtonProps> = ({label,onPress,width='90%',style}) => {
 
 const styles=StyleSheet.create({
     parentContainer:{
-        backgroundColor:'#0A84FF',
+        backgroundColor:BLUE_TINT_COLOR,
         alignItems:'center',
         justifyContent:'center',
         paddingVertical:12,
@@ -26,7 +30,7 @@ const styles=StyleSheet.create({
         borderRadius:4
     },
     labelText:{
-        color:'white'
+        color:TEXT_COLOR
     }
 })
 

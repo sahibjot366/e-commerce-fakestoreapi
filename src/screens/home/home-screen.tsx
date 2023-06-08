@@ -14,6 +14,9 @@ import { fetchProducts } from '../../redux/features/product';
 //Components
 import ProductListItem from '../../components/product-listitem';
 
+//Colors
+import { BACKGROUND_COLOR,TEXT_COLOR } from '../../constants/colors';
+
 const HomeScreen = () => {
   const dispatch=useDispatch<ThunkDispatch<any,any,any>>()
   const {isLoading,isError,products}=useSelector((state:AppState)=>state.product)
@@ -48,7 +51,7 @@ const HomeScreen = () => {
 }
 const styles=StyleSheet.create({
   parentContainer:{
-    backgroundColor:'#121212',
+    backgroundColor:BACKGROUND_COLOR,
     flex:1
   },
   listContainer:{
@@ -56,7 +59,7 @@ const styles=StyleSheet.create({
     paddingBottom:60
   },
   titleText:{
-    color:'white',
+    color:TEXT_COLOR,
     fontSize:30,
     fontWeight:'bold',
     marginVertical:8

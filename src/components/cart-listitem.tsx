@@ -12,6 +12,9 @@ import Counter from './counter'
 //Actions
 import { updateAmount,removeItem } from '../redux/features/cart'
 
+//Colors
+import { LISTITEM_COLOR,TEXT_COLOR } from '../constants/colors'
+
 
 type CartListItemProps={
     cart:CartItem
@@ -55,7 +58,7 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor:'#222222',
+        backgroundColor:LISTITEM_COLOR,
         padding:12,
         marginVertical:2,
         borderRadius:4,
@@ -75,7 +78,7 @@ const styles=StyleSheet.create({
         marginBottom:2
     },
     text:{
-        color:'white',
+        color:TEXT_COLOR,
         marginBottom:2
     },
     titleText:{

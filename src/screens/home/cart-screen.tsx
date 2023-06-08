@@ -14,6 +14,9 @@ import Button from '../../ui/button'
 //Actions
 import { clearCart } from '../../redux/features/cart'
 
+//Colors
+import { BACKGROUND_COLOR,TEXT_COLOR } from '../../constants/colors'
+
 const CartScreen = () => {
   const {cart}=useSelector((state:AppState)=>state.cart)
   const dispatch=useDispatch()
@@ -50,7 +53,7 @@ const CartScreen = () => {
 }
 const styles=StyleSheet.create({
   parentContainer:{
-    backgroundColor:'#121212',
+    backgroundColor:BACKGROUND_COLOR,
     flex:1,
     paddingHorizontal:12,
     alignItems:'center',
@@ -60,7 +63,7 @@ const styles=StyleSheet.create({
     fontSize:30,
     fontWeight:'bold',
     marginVertical:8,
-    color:'white'
+    color:TEXT_COLOR
   },
   image:{
     height:'40%',

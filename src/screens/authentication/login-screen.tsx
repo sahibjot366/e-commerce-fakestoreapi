@@ -11,6 +11,9 @@ import type { RootStackParamList } from '../../navigation/root-navigator';
 //Actions
 import { setUserDetails } from '../../redux/features/user';
 
+//Colors
+import { BACKGROUND_COLOR,TEXT_COLOR } from '../../constants/colors';
+
 const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>}) => {
 
   const dispatch=useDispatch()
@@ -78,7 +81,7 @@ const LoginScreen = ({navigation}:{navigation:NavigationProp<RootStackParamList>
 
 const styles=StyleSheet.create({
   parentContainer:{
-    backgroundColor:'#121212',
+    backgroundColor:BACKGROUND_COLOR,
     flex:1,
     paddingHorizontal:18,
     alignItems:'center',
@@ -89,7 +92,7 @@ const styles=StyleSheet.create({
     fontSize:30,
     fontWeight:'bold',
     marginBottom:24,
-    color:'white',
+    color:TEXT_COLOR,
     alignSelf:'flex-start'
   },
   errorText:{

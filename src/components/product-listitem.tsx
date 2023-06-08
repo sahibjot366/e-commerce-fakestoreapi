@@ -7,6 +7,9 @@ import type { Product } from '../redux/features/product'
 import type { HomeStackParamList } from '../navigation/home-navigator'
 import type {NavigationProp} from '@react-navigation/native';
 
+//Colors
+import { LISTITEM_COLOR,BLUE_TINT_COLOR,TEXT_COLOR } from '../constants/colors'
+
 type ProductListItemProps={
     product:Product
 }
@@ -32,7 +35,7 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor:'#222222',
+        backgroundColor:LISTITEM_COLOR,
         padding:12,
         marginVertical:2,
         borderRadius:4,
@@ -47,10 +50,10 @@ const styles=StyleSheet.create({
         width:'50%'
     },
     titleText:{
-        color:'#0A84FF'
+        color:BLUE_TINT_COLOR
     },
     priceText:{
-        color:'white'
+        color:TEXT_COLOR
     },
     imageContainer:{
         width:'50%',

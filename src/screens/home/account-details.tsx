@@ -6,6 +6,9 @@ import {useSelector} from 'react-redux'
 //Types
 import type { AppState } from '../../redux/store'
 
+//Colors
+import { BACKGROUND_COLOR,TEXT_COLOR } from '../../constants/colors'
+
 const AccountDetails = () => {
 const {userDetails}=useSelector((state:AppState)=>state.user)
 
@@ -22,7 +25,7 @@ const {userDetails}=useSelector((state:AppState)=>state.user)
 
 const styles=StyleSheet.create({
   parentContainer:{
-    backgroundColor:'#121212',
+    backgroundColor:BACKGROUND_COLOR,
     flex:1,
     paddingHorizontal:12,
     alignItems:'center',
@@ -33,14 +36,14 @@ const styles=StyleSheet.create({
     fontSize:30,
     fontWeight:'bold',
     marginBottom:36,
-    color:'white'
+    color:TEXT_COLOR
   },
   labelText:{
-    color:'white',
+    color:TEXT_COLOR,
     fontWeight:'bold'
   },
   detailsText:{
-    color:'white',
+    color:TEXT_COLOR,
     alignSelf:'flex-start'
   }
 })

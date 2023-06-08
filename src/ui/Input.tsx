@@ -5,7 +5,8 @@ import {TextInput as NTextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-
+//Colors
+import { PLACEHOLDER_COLOR,LISTITEM_COLOR,TEXT_COLOR } from '../constants/colors';
 
 export interface NInputProps extends TextInputProps {
   label?: string;
@@ -33,9 +34,9 @@ const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
   const onFocus = React.useCallback(() => setIsFocussed(true), []);
 
 
-    const labelColor=error?'red':'white'
+    const labelColor=error?'red':TEXT_COLOR
     const paddingStyle={paddingRight:iconRight?18:12,paddingLeft:iconLeft?18:12}
-    const borderColor=error?'red':isFocussed?'#A3A3A3':'#222222'
+    const borderColor=error?'red':isFocussed?PLACEHOLDER_COLOR:LISTITEM_COLOR
 
   return (
     <View style={styles.parentContainer}>
@@ -48,7 +49,7 @@ const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         <NTextInput
           testID="STextInput"
           ref={ref}
-          placeholderTextColor={'#A3A3A3'}
+          placeholderTextColor={PLACEHOLDER_COLOR}
           style={[styles.inputField,paddingStyle,{borderColor}]}
           onBlur={onBlur}
           onFocus={onFocus}
@@ -91,7 +92,7 @@ const styles=StyleSheet.create({
         padding:12,
         borderRadius:4,
         fontSize:16,
-        color:'white'
+        color:TEXT_COLOR
     },
     leftIcon:{
         position:'absolute',

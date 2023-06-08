@@ -2,6 +2,8 @@ import React,{useCallback} from 'react'
 import {View,StyleSheet,Text,TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+//Colors
+import { LISTITEM_COLOR,BLUE_TINT_COLOR,TEXT_COLOR } from '../constants/colors'
 
 type CounterProps={
     count:number;
@@ -37,7 +39,7 @@ const Counter:React.FC<CounterProps> = ({count,updateCount,width='90%',minimumCo
 const styles=StyleSheet.create({
     parentContainer:{
         flexDirection:'row',
-        backgroundColor:'#222222',
+        backgroundColor:LISTITEM_COLOR,
         alignItems:'center'
     },
     textContainer:{
@@ -53,12 +55,12 @@ const styles=StyleSheet.create({
         padding:4,
         borderWidth:1,
         borderColor:'white',
-        backgroundColor:'#0A84FF',
+        backgroundColor:BLUE_TINT_COLOR,
         alignItems:'center',
         justifyContent:'center'
     },
     countText:{
-        color:'white'
+        color:TEXT_COLOR
     }
 })
 

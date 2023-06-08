@@ -13,6 +13,9 @@ import Counter from '../../components/counter'
 //Actions
 import { addItem } from '../../redux/features/cart'
 
+//Colors
+import { BACKGROUND_COLOR,TEXT_COLOR } from '../../constants/colors'
+
 type routeParams={
   params:{
     product:Product
@@ -40,7 +43,7 @@ const ProductDetailsScreen = ({route}:{route:routeParams}) => {
 
 const styles=StyleSheet.create({
   parentContainer:{
-    backgroundColor:'#121212',
+    backgroundColor:BACKGROUND_COLOR,
     flex:1,
     paddingHorizontal:12,
     alignItems:'center',
@@ -48,7 +51,7 @@ const styles=StyleSheet.create({
   },
   commonText:{
     alignSelf:'flex-start',
-    color:'white',
+    color:TEXT_COLOR,
     marginVertical:8,
   },
   titleText:{
